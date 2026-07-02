@@ -1,0 +1,20 @@
+<main class="app-shell">
+  <section class="step-breadcrumbs">
+    <div class="step" [class.active]="!showResults()">1</div>
+    <div class="step-line"></div>
+    <div class="step" [class.active]="showResults()">2</div>
+  </section>
+
+  <app-recommendation-form
+    *ngIf="!showResults()"
+    (search)="onSearch($event)"
+  ></app-recommendation-form>
+
+  <app-recommendation-result
+    *ngIf="showResults()"
+    [recommendations]="recommendations()"
+    [loading]="loading()"
+    [error]="error()"
+    (reset)="reset()"
+  ></app-recommendation-result>
+</main>

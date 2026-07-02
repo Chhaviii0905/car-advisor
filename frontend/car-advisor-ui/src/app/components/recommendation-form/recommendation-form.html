@@ -1,0 +1,147 @@
+<section class="recommendation-card">
+
+  <div class="card-header">
+    <p class="eyebrow">🚗 Car Advisor</p>
+
+    <h2>Find Your Perfect Car</h2>
+
+    <p class="subtitle">
+      Answer a few simple questions and we'll recommend the best cars based on your budget, preferences and lifestyle.
+    </p>
+  </div>
+
+  <form class="recommendation-form"
+        #form="ngForm"
+        (ngSubmit)="onSubmit()">
+
+    <div class="form-grid">
+
+      <!-- Budget -->
+      <div class="form-group">
+        <label>Budget (₹)</label>
+
+        <input
+          type="number"
+          name="budget"
+          [(ngModel)]="request.budget"
+          placeholder="1500000"
+          required>
+      </div>
+
+      <!-- Fuel -->
+      <div class="form-group">
+        <label>Fuel Type</label>
+
+        <select
+          name="fuelType"
+          [(ngModel)]="request.fuelType">
+
+          <option
+            *ngFor="let fuel of fuelTypeOptions"
+            [value]="fuel">
+
+            {{fuel}}
+
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Transmission -->
+      <div class="form-group">
+        <label>Transmission</label>
+
+        <select
+          name="transmission"
+          [(ngModel)]="request.transmission">
+
+          <option
+            *ngFor="let transmission of transmissionOptions"
+            [value]="transmission">
+
+            {{transmission}}
+
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Body Type -->
+      <div class="form-group">
+        <label>Body Type</label>
+
+        <select
+          name="bodyType"
+          [(ngModel)]="request.bodyType">
+
+          <option
+            *ngFor="let body of bodyTypeOptions"
+            [value]="body">
+
+            {{body}}
+
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Safety -->
+      <div class="form-group">
+        <label>Minimum Safety Rating</label>
+
+        <select
+          name="minimumSafetyRating"
+          [(ngModel)]="request.minimumSafetyRating">
+
+          <option
+            *ngFor="let rating of safetyRatings"
+            [value]="rating">
+
+            {{rating}} Star
+
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Family -->
+      <div class="form-group">
+        <label>Family Size</label>
+
+        <select
+          name="familySize"
+          [(ngModel)]="request.familySize">
+
+          <option
+            *ngFor="let size of familySizes"
+            [value]="size">
+
+            {{size}} Members
+
+          </option>
+
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-footer">
+
+      <button
+        type="submit"
+        [disabled]="form.invalid">
+
+        🔍 Find My Perfect Car
+
+      </button>
+
+    </div>
+
+    <p class="helper-text">
+      ✔ Recommendations are based on your budget, fuel preference,
+      transmission, safety rating and family size.
+    </p>
+
+  </form>
+
+</section>

@@ -1,0 +1,55 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+bin/
+obj/
+**/bin/
+**/obj/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET
+TestResults/
+artifacts/
+
+# ASP.NET Secrets
+secrets.json
+appsettings.Development.json
+
+# Angular
+node_modules/
+dist/
+.angular/
+coverage/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+
+# Operating SystemThumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# JetBrains IDEs 
+.idea/
+
+# Package files
+*.nupkg

@@ -1,0 +1,28 @@
+<section class="result-panel">
+  <div class="result-header">
+    <div>
+      <p class="eyebrow">Recommendations</p>
+      <h3>Top 5 car matches</h3>
+    </div>
+  </div>
+
+  <div class="status-banner" *ngIf="loading">
+    Fetching recommendations... please wait.
+  </div>
+
+  <div class="status-banner error" *ngIf="!loading && error">
+    {{ error }}
+  </div>
+
+  <div class="result-actions" *ngIf="!loading && !error">
+    <button class="back-button" type="button" (click)="onReset()">Back to form</button>
+  </div>
+
+  <div class="result-grid" *ngIf="!loading && !error && recommendations.length">
+    <app-car-card *ngFor="let car of recommendations" [car]="car"></app-car-card>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && !error && recommendations.length === 0">
+    Submit your preferences to see the top 5 recommended cars.
+  </div>
+</section>

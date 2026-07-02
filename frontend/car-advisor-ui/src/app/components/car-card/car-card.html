@@ -1,0 +1,29 @@
+<article class="car-card">
+  <div class="car-card__image">
+    <img [src]="imageSrc" [alt]="car.make + ' ' + car.model"/>
+    <span class="car-card__match">Match {{ car.matchScore | number:'1.0-0' }}%</span>
+  </div>
+
+  <div class="car-card__content">
+    <div class="car-card__title">
+      <div>
+        <h4>{{ car.make }} {{ car.model }}</h4>
+        <p class="variant">{{ car.variant }}</p>
+      </div>
+      <span class="price">₹{{ car.price | number }}</span>
+    </div>
+
+    <div class="car-card__details">
+      <span>{{ car.safetyRating }}★ safety</span>
+      <span>{{ car.mileage }} kmpl</span>
+      <span>{{ car.userRating | number:'1.1-1' }} user rating</span>
+    </div>
+
+    <div class="car-card__reasons">
+      <strong>Why this car?</strong>
+      <ul>
+        <li *ngFor="let reason of car.reasons">{{ reason }}</li>
+      </ul>
+    </div>
+  </div>
+</article>
