@@ -1,200 +1,254 @@
 # Car Advisor
 
-Car Advisor is a full-stack web application that helps users discover the most suitable car based on their budget and preferences. Instead of browsing through hundreds of vehicles, users answer a few simple questions, and the application recommends the best matching cars along with the reasons for each recommendation.
-
-## Problem Statement
-
-Car buyers often struggle to compare numerous makes, models, variants, and specifications. This project simplifies the decision-making process by providing personalized recommendations based on user preferences.
-
-## Features
-
-* Budget-based car recommendations
-* Fuel type selection
-* Transmission preference
-* Body type preference
-* Minimum safety rating filter
-* Family size consideration
-* Match score for every recommendation
-* Explanation of why each car was recommended
-* Clean and responsive user interface
-
-## Tech Stack
-
-### Frontend
-
-* Angular 18
-* TypeScript
-* SCSS
-* Angular Forms
-* HttpClient
-
-### Backend
-
-* .NET 8 Web API
-* Entity Framework Core
-* SQLite
-
-## Project Structure
-
-```
-CarAdvisor/
-│
-├── backend/
-│   ├── Controllers/
-│   ├── Models/
-│   ├── DTOs/
-│   ├── Services/
-│   ├── Data/
-│   └── Seed/
-│
-├── frontend/
-│   ├── components/
-│   ├── models/
-│   ├── services/
-│   └── assets/
-│
-└── README.md
-```
-
-## Recommendation Logic
-
-Each car is evaluated against the user's preferences and assigned a match score based on factors such as:
-
-* Budget
-* Fuel type
-* Transmission
-* Body type
-* Safety rating
-* Family size
-* User rating
-
-The highest-scoring cars are returned as recommendations, along with the reasons they were selected.
-
-## Running the Project
-
-### Backend
-
-1. Navigate to the backend project.
-
-```
-cd backend
-```
-
-2. Restore packages.
-
-```
-dotnet restore
-```
-
-3. Apply migrations.
-
-```
-Update-Database
-```
-
-or
-
-```
-dotnet ef database update
-```
-
-4. Run the API.
-
-```
-dotnet run
-```
-
-Swagger will be available after the application starts.
+Car Advisor is a full-stack web application that helps users confidently shortlist cars based on their budget and preferences. Instead of manually comparing numerous vehicles, users provide a few simple preferences, and the application recommends the most suitable cars along with a match score and the reasons behind each recommendation.
 
 ---
 
-### Frontend
+## Problem Statement
 
-1. Navigate to the frontend project.
+Buying a car can be overwhelming because of the large number of makes, models, variants, and specifications available. This project simplifies the decision-making process by recommending the most suitable cars based on user preferences.
+
+---
+
+## Features
+
+- Budget-based car recommendations
+- Fuel type preference
+- Transmission preference
+- Body type preference
+- Minimum safety rating filter
+- Family size consideration
+- Match score for every recommendation
+- Recommendation reasons for every suggested car
+- Clean and responsive user interface
+- Docker support for one-command project setup
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- Angular 18
+- TypeScript
+- SCSS
+- Angular Forms
+- HttpClient
+
+## Backend
+
+- ASP.NET Core 8 Web API
+- Entity Framework Core
+- SQLite
+
+## Tools
+
+- Docker
+- Docker Compose
+- Git
+- GitHub
+- GitHub Copilot
+- ChatGPT
+
+---
+
+# Project Structure
 
 ```
-cd frontend/car-advisor-ui
+CarAdvisor
+│
+├── backend
+│   └── CarAdvisor.API
+│       ├── Controllers
+│       ├── DTOs
+│       ├── Models
+│       ├── Services
+│       ├── Data
+│       ├── Seed
+│       └── Dockerfile
+│
+├── frontend
+│   └── car-advisor-ui
+│       ├── src
+│       └── Dockerfile
+│
+├── docker-compose.yml
+└── README.md
 ```
 
-2. Install dependencies.
+---
 
-```
-npm install
+# Recommendation Logic
+
+Each car is evaluated against the user's preferences.
+
+The recommendation score is calculated using:
+
+- Budget
+- Fuel Type
+- Transmission
+- Body Type
+- Minimum Safety Rating
+- Family Size
+- User Rating
+
+The application ranks the cars based on the calculated score and returns the top recommendations along with explanations describing why each car matches the user's preferences.
+
+---
+
+# Running the Project
+
+## Recommended (Docker)
+
+Clone the repository.
+
+```bash
+git clone <repository-url>
+cd CarAdvisor
 ```
 
-3. Start the Angular application.
+Run the complete application using Docker Compose.
 
-```
-ng serve
+```bash
+docker compose up --build
 ```
 
-Open:
+Frontend
 
 ```
 http://localhost:4200
 ```
 
-> Ensure the backend API is running before using the application.
+Backend API
 
-## What I Built
+```
+http://localhost:5005
+```
 
-I built a focused MVP that helps users move from uncertainty to a shortlist of recommended cars. The application collects a user's preferences, evaluates the available cars using a scoring algorithm, and returns the best matches together with an explanation of why they were recommended.
+Swagger (Development Mode)
 
-## What I Deliberately Cut
+```
+http://localhost:5005/swagger
+```
 
-To stay within the time constraint, I intentionally did not implement:
+---
 
-* User authentication
-* Advanced filtering and sorting
-* Car comparison page
-* Favorites or saved recommendations
-* Detailed car specification pages
-* AI-powered natural language recommendations
-* Production deployment and CI/CD
+## Manual Setup
 
-The focus was on delivering a complete end-to-end recommendation experience.
+### Backend
 
-## AI Tool Usage
+```bash
+cd backend/CarAdvisor/CarAdvisor.API
 
-AI tools were used throughout the development process to accelerate implementation and improve productivity.
+dotnet restore
 
-They were particularly helpful for:
+dotnet ef database update
 
-* Angular component scaffolding
-* UI refinement
-* Boilerplate code generation
-* General development guidance
+dotnet run
+```
 
-All generated code was reviewed, modified, integrated, and tested before being committed.
+### Frontend
 
-## Challenges
+```bash
+cd frontend/car-advisor-ui
 
-* Designing a recommendation algorithm that balances simplicity and usefulness.
-* Connecting Angular and .NET with proper CORS configuration.
-* Creating a reusable component structure while staying within the project time limit.
+npm install
 
-## If I Had Four More Hours
+ng serve
+```
 
-I would add:
+Open
 
-* Smarter recommendation scoring with weighted preferences
-* Side-by-side car comparison
-* Search and filtering
-* Pagination
-* Better analytics and insights
-* Improved visuals with real vehicle images
-* Unit and integration tests
-* Docker support and cloud deployment
+```
+http://localhost:4200
+```
 
-## Future Improvements
+---
 
-* AI-generated recommendation summaries
-* Personalized recommendation history
-* Advanced filtering by brand, mileage, and price
-* Review sentiment analysis
-* Performance optimizations
-* Responsive improvements for mobile devices
+# What I Built
 
-## Author
+I built a focused MVP that helps users move from uncertainty to a shortlist of recommended cars.
 
-Developed as part of a full-stack engineering assessment using Angular 20, .NET 8, Entity Framework Core, and SQLite.
+Users provide their preferences through a simple form, and the application evaluates the available cars using a rule-based recommendation algorithm. The highest matching cars are returned together with a match score and an explanation describing why each recommendation was made.
+
+The emphasis was on solving the core user problem instead of building a large feature-rich automotive marketplace.
+
+---
+
+# What I Deliberately Cut
+
+To stay within the assignment's time limit, I intentionally chose not to implement:
+
+- User authentication
+- Admin dashboard
+- Car comparison feature
+- Favorites or saved recommendations
+- Detailed specification pages
+- Advanced search and filtering
+- Machine Learning recommendation engine
+- Cloud deployment
+- CI/CD pipeline
+
+Instead, I focused on delivering a complete end-to-end recommendation experience.
+
+---
+
+# AI Tool Usage
+
+GitHub Copilot and ChatGPT were actively used throughout the development process.
+
+AI tools helped with:
+
+- Angular component scaffolding
+- UI improvements
+- Boilerplate code generation
+- Docker configuration
+- General debugging
+- Architecture discussions
+- Development guidance
+
+All AI-generated code was reviewed, modified, integrated, and tested before being committed.
+
+---
+
+# Challenges Faced
+
+Some of the challenges encountered during development included:
+
+- Designing a recommendation algorithm that remained simple yet useful
+- Connecting Angular and ASP.NET Core through CORS
+- Configuring Docker for both frontend and backend
+- Seeding the SQLite database automatically
+- Balancing development speed with maintainable code
+
+---
+
+# If I Had Another Four Hours
+
+Given additional time, I would add:
+
+- Smarter weighted recommendation algorithm
+- Side-by-side car comparison
+- Search and advanced filtering
+- Pagination
+- Better analytics and recommendation insights
+- Real vehicle images
+- Unit and integration tests
+- Cloud deployment (Azure, Render or AWS)
+- User authentication
+
+---
+
+# Future Improvements
+
+- AI-generated recommendation summaries
+- Recommendation history
+- Review sentiment analysis
+- Personalized recommendations
+- Brand-wise filtering
+- Performance optimizations
+- Improved mobile responsiveness
+
+# Author
+
+Developed as part of a Full-Stack Engineering Assessment using Angular 18, ASP.NET Core 8 Web API, Entity Framework Core, SQLite, Docker, and Docker Compose.
